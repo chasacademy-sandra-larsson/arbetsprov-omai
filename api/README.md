@@ -75,9 +75,32 @@ visar hur frågan tolkades — medvetet exponerat för felsökning och transpare
 Felsvar: `400` med fältvisa detaljer vid ogiltig indata, `503` med åtgärdbar
 text om Chroma inte är igång/ingestad, `404` med hjälptext för okända routes.
 
+**Exempel (curl):**
+
+```bash
+# Fritext på svenska — negation blir hårt exclude-filter
+curl -X POST http://localhost:3000/search \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "pasta utan tomat", "maxResults": 3}'
+
+# Bara ingredienser, på svenska
+curl -X POST http://localhost:3000/search \
+  -H 'Content-Type: application/json' \
+  -d '{"ingredients": ["kyckling", "citron", "vitlök"]}'
+
+# Fritext + ingredienser kombinerat, på engelska
+curl -X POST http://localhost:3000/search \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "creamy stew", "ingredients": ["chicken", "mushrooms"]}'
+```
+
 ### `GET /health`
 
 Status, antal indexerade recept och aktivt tolkningsläge (`llm`/`fallback`).
+
+```bash
+curl http://localhost:3000/health
+```
 
 Testverktyg utan HTTP: `npm run search -- "pasta utan tomat"`.
 

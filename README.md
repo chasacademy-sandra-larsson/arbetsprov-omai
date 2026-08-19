@@ -2,6 +2,23 @@
 
 # ARBETSPROV - Recept
 
+## Lösning
+
+REST-API för semantisk receptsökning: flerspråkig indata (fritext och/eller
+ingredienslista), engelska recept som svar. Hybrid arkitektur — LLM-frågetolkning
+(Claude Haiku) framför flerspråkig vektorsökning (multilingual-e5 + Chroma).
+
+| | |
+|---|---|
+| [`api/`](api/) | Lösningen. **Start, beroenden, API-dokumentation, arkitektur och AI-valen: [`api/README.md`](api/README.md)** |
+| [`PROTOTYP.md`](PROTOTYP.md) | Förstudien: mätande miniprototyp vars fem fynd motiverar arkitekturvalen |
+| [`prototyp/`](prototyp/) | Förstudiens kod (fristående, ~1 000 recept i minnet) |
+
+Snabbstart: `cd api && npm install && docker compose up -d && npm run ingest && npm start`
+— detaljer och API-exempel i [`api/README.md`](api/README.md).
+
+---
+
 ## Uppgift
 Din uppgift är att bygga ett REST-baserat API som kan söka efter recept, givet ett antal ingredienser eller en beskrivning av vad man vill laga. 
 

@@ -17,12 +17,15 @@ Hänvisningar till "fynd N" nedan pekar dit.
 ```bash
 cd api
 npm install
-docker compose up -d          # stödsystem: Chroma (vektordatabas) på port 8000
+docker compose up -d chroma   # stödsystem: Chroma (vektordatabas) på port 8000
 cp .env.example .env          # fyll i ANTHROPIC_API_KEY (rekommenderas)
 
 npm run ingest                # engångskörning: indexera alla recept (~1,5–2 h)
 npm start                     # API:t på http://localhost:3000
 ```
+
+Alternativt körs hela stacken (API + Chroma) i Docker, som vid molndeployen:
+`docker compose up -d --build` — då behövs varken npm eller lokal Node.
 
 Ingesten läser `../20170107-061401-recipeitems.json` (173 278 recept, NDJSON),
 är **idempotent och resumbar** — avbryts den fortsätter en omstart där den

@@ -7,3 +7,23 @@ services:
       # Persistens: indexet överlever omstarter, ingest behöver bara köras en gång.
       - ./chroma-data:/data
     restart: unless-stopped
+
+  # API:t som container — används vid deploy (docker compose up -d --build).
+  # Vid lokal utveckling räcker `docker compose up -d chroma` + `npm start`.
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - CHROMA_URL=http://chroma:8000
+      # Läses ur .env i samma katalog; utan nyckel körs fallback-läget.
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      # Embeddingmodellen (~120 MB) laddas ner vid första start — cacha den.
+      - model-cache:/app/.cache
+    depends_on:
+      - chroma
+    restart: unless-stopped
+
+volumes:
+  model-cache:

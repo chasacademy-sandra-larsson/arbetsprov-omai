@@ -12,7 +12,10 @@ ingredienslista), engelska recept som svar. Hybrid arkitektur — LLM-frågetolk
 | [`PROTOTYP.md`](PROTOTYP.md) | Förstudien: mätande miniprototyp vars fem fynd motiverar arkitekturvalen |
 | [`prototyp/`](prototyp/) | Förstudiens kod (fristående, ~1 000 recept i minnet) |
 
-Snabbstart: `cd api && npm install && docker compose up -d && npm run ingest && npm start`
+**Live-instans (molndeploy):** http://204.168.246.42:3000 — prova
+`curl http://204.168.246.42:3000/health` eller sökexemplen i [`api/README.md`](api/README.md).
+
+Snabbstart lokalt: `cd api && npm install && docker compose up -d chroma && npm run ingest && npm start`
 — detaljer och API-exempel i [`api/README.md`](api/README.md).
 
 ---

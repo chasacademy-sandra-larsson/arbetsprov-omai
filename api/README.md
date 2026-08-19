@@ -217,6 +217,14 @@ Lägsta värde med full träff valdes — 0,10 riskerar att lexikala träffar k�
 - I fallback-läget gäller prototypens fynd 2: svenska frågor fungerar men
   rankar sämre än engelska.
 
+## Molndeploy
+
+En live-instans kör på en Hetzner-VPS (CPX22: 2 vCPU, 4 GB RAM):
+**http://204.168.246.42:3000** — t.ex. `GET /health` eller curl-exemplen ovan
+mot den adressen. Deployen är exakt samma docker compose som lokalt
+(`docker compose up -d --build`), med det lokalt byggda Chroma-indexet
+uppladdat till servern (ingen om-ingest) och API-nyckeln i serverns `.env`.
+
 ## Tester
 
 ```bash

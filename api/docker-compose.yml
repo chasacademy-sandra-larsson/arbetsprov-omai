@@ -1,0 +1,9 @@
+services:
+  chroma:
+    image: chromadb/chroma:1.0.15
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persistens: indexet överlever omstarter, ingest behöver bara köras en gång.
+      - ./chroma-data:/data
+    restart: unless-stopped

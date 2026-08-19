@@ -1,5 +1,3 @@
-![OMAI](bilder/omai_F46B63.png)
-
 # ARBETSPROV - Recept
 
 ## Lösning
